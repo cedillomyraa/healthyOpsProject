@@ -1,14 +1,131 @@
-{% extends 'base.html' %}
-
-{% block title %}Log In{% endblock title%}
+{% load static %}
 
 {% block content %}
-<h1>Log In</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Log In" class="btn btn-success" />
-</form>  
-<small>Don't have an account? Click <a href ="{% url 'signup' %}">here</a> to sign up.</small>
-<small>Forgot your password? Click <a href ="{% url 'password_reset' %}">here</a>to reset it.</small>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/login.css">
+    <script src="https://kit.fontawesome.com/d82a0bd216.js" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Catalog - HealthyOps</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="{% static 'images/healthyops_logo_blk.png' %}">
+            </div>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'catalog' %}">Catalog</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                </nav>
+        </div>
+    </div>
+
+
+<!-- Login Form -->
+<body>
+    <div class="login">
+        <h1>HealthyOps Member Login</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="log" type="submit" value="Login">
+        </form>  
+        <small>Don't have an account? Click <a href ="{% url 'signup' %}">here</a> to sign up.</small>
+        <small>Forgot your password? Click <a href ="{% url 'password_reset' %}">here</a> to reset it.</small>
+    </div>
+</body>
+
+<!-- Login Style -->
+<style>
+/* Login */
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.logo{
+    display: flex;
+    height: 70px;
+}
+.container{
+    display: flex;
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.login{
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    width: 400px;
+    background: transparent;
+    border-radius: 10px;
+}
+.login h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    color: black;
+    border-bottom: 1px solid black;
+}
+.login form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+.log{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    color: white;
+    background: rgb(0, 0, 0);
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    outline: none;
+}
+.log:hover{
+    border-color: tomato;
+    transition: .5s;
+}
+input{
+    margin-bottom: 3px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #075511, #ff9a3b);
+    height: 100vh;
+    overflow: hidden;
+}
+
+</style>
 {% endblock content %}
